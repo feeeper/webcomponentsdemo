@@ -1,9 +1,46 @@
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
 <head>
-    <title></title>
+
+    <link rel="stylesheet" href="css/template.css" type="text/css" media="screen">
+
+    <template id="img-with-caption">
+        <h3>
+            Шаблон вставлен в DOM.
+            Котёнок загружен.
+            <a href="docs">Код</a>.
+            <a href=".">Повторить</a>.
+        </h3>
+        <img src="images/kitten.jpeg"/>
+    </template>
+
+    <script src="js/templates.js"></script>
 </head>
+
 <body>
 
+<div class="content">
+
+    <h2>
+        <a href="..">ГЛАВНАЯ</a> |
+        <a href="docs">КОД ПРИМЕРА</a>
+    </h2>
+
+    <h1>Пример использования тега &lt;template&gt;</h1>
+
+    <div id="wait-for-it">
+        <h3>
+            Откройте вкладку Network в DevTools,
+            картика начнёт грузится
+            через <span id="seconds">3</span>...
+        </h3>
+    </div>
+
+</div>
+
 </body>
+
 </html>
