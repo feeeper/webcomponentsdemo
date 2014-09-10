@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel='import' href="slides.html">
     <title></title>
     <script>
         function next() {
@@ -18,32 +19,51 @@
             document.querySelector(".content").appendChild(document.importNode(content, true));
         }
 
+        var slides = document.querySelector('link[rel="import"').import;
+
     </script>
 </head>
 <body>
 <div class='content'></div>
 <button onclick="next()">Next</button>
 
-<template id="slide-1">
-    <input type='hidden' id='1'/>
-    <x-slide>
-        <x-title>заголовок первого слайда</x-title>
-        <x-content>содержимое первого слайда</x-content>
-    </x-slide>
+<template id='shadow'>
+    <p>Это видим на странице</p>
+    <content>Это держим в уме</content>
 </template>
-<template id="slide-2">
-    <input type='hidden' id='2'/>
-    <x-slide>
-        <x-title>заголовок второго слайда</x-title>
-        <x-content>содержимое второго слайда</x-content>
-    </x-slide>
+
+
+
+
+<template id="content-select">
+    <h1>Просто</h1>
+    <content select=".description"></content>
+    <content select=".name"></content>
 </template>
+
+<div class="shadow-host">
+    <h1 class="name">Варлам</h1>
+    <img src="varlam.png">
+    <p class="description">Бодрый Пёс</p>
+</div>
+
+<script>
+    function doit() {
+        var host = document.querySelector('.shadow-host'),
+        template = document.querySelector('#content-select'),
+        shadow = host.createShadowRoot();
+
+        shadow.appendChild(template.content);
+    }
+</script>
+
+
 
 <script>
     var host = document.querySelector('button');
-    var root = host.createShadowRoot();
-    root.appendChild(document.importNode(document.createTextNode("<div>ololo</div>"), true))
-    console.log(root);
+    var template = document.querySelector('#shadow');
+    var shadow = host.createShadowRoot();
+    shadow.appendChild(template.content);
 </script>
 
 </body>
