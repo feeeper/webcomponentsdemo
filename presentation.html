@@ -13,7 +13,7 @@
                 currentSlideNum = 1;
             }
 
-            var template = document.querySelector("#slide-" + currentSlideNum);
+            var template = slides.querySelector("#slide-" + currentSlideNum);
             var content = template.content;
             document.querySelector(".content").innerHTML = '';
             document.querySelector(".content").appendChild(document.importNode(content, true));
