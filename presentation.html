@@ -4,10 +4,20 @@
     <title></title>
     <script>
         function next() {
-            var template = document.querySelector("#slide-1");
+            var currentSlideNum = 1;
+            try {
+                currentSlideNum = parseInt(document.querySelector(".content input[type='hidden']").attributes['id'].value) + 1;
+            }
+            catch (e) {
+                currentSlideNum = 1;
+            }
+
+            var template = document.querySelector("#slide-" + currentSlideNum);
             var content = template.content;
+            document.querySelector(".content").innerHTML = '';
             document.querySelector(".content").appendChild(document.importNode(content, true));
         }
+
     </script>
 </head>
 <body>
@@ -15,17 +25,26 @@
 <button onclick="next()">Next</button>
 
 <template id="slide-1">
+    <input type='hidden' id='1'/>
     <x-slide>
-        <x-title/>
-        <x-content/>
+        <x-title>заголовок первого слайда</x-title>
+        <x-content>содержимое первого слайда</x-content>
     </x-slide>
 </template>
 <template id="slide-2">
+    <input type='hidden' id='2'/>
     <x-slide>
-        <x-title/>
-        <x-content/>
+        <x-title>заголовок второго слайда</x-title>
+        <x-content>содержимое второго слайда</x-content>
     </x-slide>
 </template>
+
+<script>
+    var host = document.querySelector('button');
+    var root = host.createShadowRoot();
+    root.appendChild(document.importNode(document.createTextNode("<div>ololo</div>"), true))
+    console.log(root);
+</script>
 
 </body>
 </html>
