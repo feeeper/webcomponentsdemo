@@ -2,16 +2,30 @@
 <html>
 <head>
     <title></title>
-    <template id="slide-1">
-        <x-slide>
-            <x-title/>
-            <x-content/>
-        </x-slide>
-    </template>
-    <template id="slide-2">
-    </template>
+    <script>
+        function next() {
+            var template = document.querySelector("#slide-1");
+            var content = template.content;
+            document.querySelector(".content").appendChild(document.importNode(content, true));
+        }
+    </script>
 </head>
 <body>
+<div class='content'></div>
+<button onclick="next()">Next</button>
+
+<template id="slide-1">
+    <x-slide>
+        <x-title/>
+        <x-content/>
+    </x-slide>
+</template>
+<template id="slide-2">
+    <x-slide>
+        <x-title/>
+        <x-content/>
+    </x-slide>
+</template>
 
 </body>
 </html>
