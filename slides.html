@@ -80,12 +80,16 @@
 </template>
 
 <template id='slide-6'>
+    <style>
+        .kitten { background-image: url('images/kitten.jpeg'); width: 400px; height: 300px;}
+    </style>
     <div class='slide'>
         <input type='hidden' id='6'/>
         <h2>Shadow DOM. Content</h2>
         <article>
             <div class='host'>
-                <img src="images/kitten.jpeg">
+<!--                <img src="images/kitten.jpeg">-->
+                <div class="kitten"></div>
                 <span class='name'>Юра</span>
                 <span class='surname'>Куклачев</span>
             </div>
@@ -97,6 +101,7 @@
             <style>
                 .name { background-color: red; }
                 .surname { background-color: green; }
+                :host-context(div) { background-image: url('images/icon-customelements.png'); width: 400px; height: 300px; }
             </style>
             <h2>Это шаблон</h2>
             <content select='name'><span class='name'>Джонатан</span></content>
