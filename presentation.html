@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel='import' href="slides.html">
+    <link rel='stylesheet' href="css/template.css"/>
     <title></title>
     <script>
         function next() {
@@ -20,50 +21,27 @@
         }
 
         var slides = document.querySelector('link[rel="import"').import;
-
     </script>
 </head>
 <body>
 <div class='content'></div>
-<button onclick="next()">Next</button>
+<button onclick="next()">Дальше</button>
 
 <template id='shadow'>
-    <p>Это видим на странице</p>
-    <content>Это держим в уме</content>
+    <p>Дальше</p>
+    <content>Ололошеньки</content>
 </template>
 
-
-
-
-<template id="content-select">
-    <h1>Просто</h1>
-    <content select=".description"></content>
-    <content select=".name"></content>
-</template>
-
-<div class="shadow-host">
-    <h1 class="name">Варлам</h1>
-    <img src="varlam.png">
-    <p class="description">Бодрый Пёс</p>
-</div>
-
 <script>
-    function doit() {
-        var host = document.querySelector('.shadow-host'),
-        template = document.querySelector('#content-select'),
-        shadow = host.createShadowRoot();
-
-        shadow.appendChild(template.content);
-    }
-</script>
-
-
-
-<script>
-    var host = document.querySelector('button');
+/*    var host = document.querySelector('button');
     var template = document.querySelector('#shadow');
     var shadow = host.createShadowRoot();
-    shadow.appendChild(template.content);
+    shadow.appendChild(template.content);*/
+
+    var template = slides.querySelector("#slide-2");
+    var content = template.content;
+    document.querySelector(".content").innerHTML = '';
+    document.querySelector(".content").appendChild(document.importNode(content, true));
 </script>
 
 </body>

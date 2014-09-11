@@ -1,71 +1,8 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
-
-html {
-    font-family: sans-serif;
-    line-height: 1.5em;
+ul {
+    list-style-type: none;
 }
 
-h1, h2, h3, p {
-    line-height: 1.2em;
-}
-
-* {
-    -webkit-font-smoothing: antialiased;
-}
-
-.center {
-    text-align: center;
-}
-
-code {
-    font-family: 'Source Code Pro', 'monospaced';
-}
-
-
-.content {
-    max-width: 600px;
+.slide {
+    width: 200px;
     margin: auto;
-}
-
-ul {
-    margin: 0;
-}
-
-h2 {
-    margin: 1em 0 0 0;
-}
-
-ul {
-    list-style: none;
-    padding: 0.5em 1em;
-}
-
-li {
-    padding: 0.2em 0;
-}
-
-.warning {
-    background-color: rgba(237, 78, 66, 0.5);
-    padding: 1.5em;
-}
-
-:unresolved {
-    visibility: hidden;
-}
-
-wc-example:unresolved:before {
-    visibility: visible;
-
-    text-align: center;
-    font-size: 2em;
-    content: "IMPORTING HTML...";
-    width: 100%;
-
-    background-color: rgba(0, 0, 0, 0.1);
-
-    /*height: 300px;*/
-}
-
-pre code {
-    overflow-x: scroll;
 }

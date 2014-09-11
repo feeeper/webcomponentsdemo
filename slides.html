@@ -1,15 +1,121 @@
 <template id="slide-1">
+    <div class='slide'>
     <input type='hidden' id='1'/>
     <h2>Agenda</h2>
-    <article></article>
+    <article>
+            Templates<br/>
+            Imports  <br/>
+            Shadow DOM    <br/>
+            Custom elements    <br/>
+            Decorators [?]          <br/>
+    </article>
+        </div>
 </template>
 <template id="slide-2">
-    <input type='hidden' id='2'/>
-    <h2>Templates</h2>
-    <article></article>
+    <div class='slide'>
+        <input type='hidden' id='2'/>
+        <h2>Templates</h2>
+        <article>
+            <button onclick='getKitten()'>Получить котенка</button>
+            <br/>
+        </article>
+        <template id='example'>
+            <img id='kitten'/>
+        </template>
+        <script>
+            function getKitten() {
+                var template = document.querySelector('#example');
+                var content = template.content;
+                content.querySelector('#kitten').setAttribute('src', 'images/kitten.jpeg');
+                var imported = document.importNode(content);
+
+                document.querySelector('article').appendChild(imported);
+            }
+        </script>
+    </div>
 </template>
 <template id="slide-3">
-    <input type='hidden' id='3'/>
-    <h2>Shadow DOM</h2>
-    <article></article>
+    <div class='slide'>
+        <input type='hidden' id='3'/>
+        <h2>Imports</h2>
+        <article></article>
+    </div>
+</template>
+
+<template id='slide-4'>
+    <script src='https://code.jquery.com/jquery-1.11.1.min.js'></script>
+    <div class='slide'>
+        <input type='hidden' id='4'/>
+        <h2>Shadow DOM 1</h2>
+        <article>
+            <audio controls>
+                <source src="media/music.ogg" type="audio/ogg; codecs=vorbis">
+                <source src="media/music.mp3" type="audio/mpeg">
+                Тег audio не поддерживается вашим браузером.
+                <a href="media/music.mp3">Скачайте музыку</a>.
+            </audio>
+        </article>
+    </div>
+</template>
+
+<template id='slide-5'>
+    <div class='slide'>
+        <input type='hidden' id='5'/>
+        <h2>Shadow DOM 2</h2>
+        <article>
+            <span class='host'></span>
+        </article>
+        <script>
+            var host = document.querySelector('span.host');
+            var input = document.createElement("input");
+            input.type = "text";
+            var button = document.createElement('input');
+            button.type = 'button';
+            button.value = 'ok';
+
+            var shadow = host.createShadowRoot();
+            shadow.appendChild(input);
+            shadow.appendChild(button);
+        </script>
+    </div>
+</template>
+
+<template id='slide-6'>
+    <div class='slide'>
+        <input type='hidden' id='6'/>
+        <h2>Shadow DOM. Content</h2>
+        <article>
+            <div class='host'>
+                <img src="images/kitten.jpeg">
+                <span class='name'>Юра</span>
+                <span class='surname'>Куклачев</span>
+            </div>
+            <br/>
+            <button onclick="doMagic()">do the magic!</button>
+        </article>
+
+        <template>
+            <style>
+                .name { background-color: red; }
+                .surname { background-color: green; }
+            </style>
+            <h2>Это шаблон</h2>
+            <content select='name'><span class='name'>Джонатан</span></content>
+
+            <content></content> <!--здесь будет содержимое хоста-->
+
+            <content select='surname'><span class='surname'>Девис</span></content>
+
+        </template>
+
+        <script>
+            function doMagic() {
+                var host = document.querySelector('div.host'),
+                    template = document.querySelector('template'),
+                    shadow = host.createShadowRoot();
+
+                shadow.appendChild(template.content);
+            }
+        </script>
+    </div>
 </template>
