@@ -6,9 +6,15 @@
 <body>
 <x-puppy></x-puppy>
 <div>
-    <strong>Puppy's life:</strong>
-    <pre id="puppys-life"></pre>
-    <button onclick="callPuppy()">Призвать щеночка</button>
+    <div class='slide'>
+        <input type='hidden' id='6'/>
+        <h2>Custom Elements. Простой пример</h2>
+        <article>
+            <strong>Puppy's life:</strong>
+            <pre id="puppys-life"></pre>
+            <button onclick="callPuppy()">Призвать щеночка</button>
+        </article>
+    </div>
 </div>
 <script>
     var life = document.querySelector('#puppys-life');

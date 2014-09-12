@@ -5,7 +5,13 @@
 
 </head>
 <body>
-<x-todo></x-todo>
+    <div class='slide'>
+        <input type='hidden' id='6'/>
+        <h2>Custom Elements feat Shadow DOM</h2>
+        <article>
+            <x-todo></x-todo>
+        </article>
+    </div>
 <script>
     var XTodoProto = Object.create(HTMLElement.prototype);
     XTodoProto.addItem = function() {}
