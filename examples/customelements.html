@@ -4,6 +4,55 @@
     <title></title>
 </head>
 <body>
+<x-puppy></x-puppy>
+<div>
+    <strong>Puppy's life:</strong>
+    <pre id="puppys-life"></pre>
+    <button onclick="callPuppy()">Призвать щеночка</button>
+    <button onclick="lastUpdate()"></button>
+</div>
+<script>
+    var life = document.querySelector('#puppys-life');
+    var xPuppyProto = Object.create(HTMLElement.prototype);
 
+    xPuppyProto.nickName = 'Cake';
+    xPuppyProto.writable = true;
+
+     xPuppyProto.woof = function () {
+        life.innerHTML += this.nickName + ': woof\n';
+    };
+
+     xPuppyProto.createdCallback = function () {
+        life.innerHTML += '<img src="../images/puppy4.jpg" style="width: 520px; height: 349px"><br/>created\n';
+    };
+
+     xPuppyProto.attachedCallback = function () {
+        life.innerHTML += 'attached\n';
+    };
+
+     xPuppyProto.detachedCallback = function () {
+        life.innerHTML += 'detached\n';
+    };
+
+     xPuppyProto.attributeChangedCallback = function (name, oldVal, newVal) {
+        life.innerHTML += (
+                'Attribute ' + name +
+                        ' changed from ' + oldVal +
+                        ' to ' + newVal + '\n');
+    };
+
+    function callPuppy() {
+        document.registerElement('x-puppy', { prototype:  xPuppyProto });
+
+        document.querySelector('x-puppy').setAttribute('friend', 'Fiona');
+
+        document.querySelector('x-puppy').woof();
+
+        document.querySelector('x-puppy').nickName = 'Caaaaake';
+        //document.querySelector('x-puppy').woof();
+
+        document.querySelector('x-puppy').remove();
+    }
+</script>
 </body>
 </html>
