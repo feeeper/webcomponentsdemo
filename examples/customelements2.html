@@ -5,41 +5,37 @@
 
 </head>
 <body>
-<x-foo-shadowdom></x-foo-shadowdom>
+<x-todo></x-todo>
 <script>
-    var XFooProto = Object.create(HTMLElement.prototype);
-    XFooProto.addItem = function() {}
+    var XTodoProto = Object.create(HTMLElement.prototype);
+    XTodoProto.addItem = function() {}
 
-    XFooProto.createdCallback = function() {
-        // 1. Attach a shadow root on the element.
+    XTodoProto.createdCallback = function() {
         var shadow = this.createShadowRoot();
 
-        // 2. Fill it with markup goodness.
-        //shadow.innerHTML = "<b>I'm in the element's Shadow DOM!</b>";
-        //var host = document.querySelector('span.host');
         var input = document.createElement("input");
         input.type = "text";
         input.setAttribute('id', 'inp');
+        shadow.appendChild(input);
+
         var button = document.createElement('input');
         button.type = 'button';
         button.value = 'ok';
-
-        //var shadow = host.createShadowRoot();
-        shadow.appendChild(input);
         shadow.appendChild(button);
-
         var addBtn = shadow.querySelector('input[type="button"]');
         addBtn.addEventListener('click', function() {
             var inp = shadow.querySelector('#inp');
-            alert(inp.value);
+            var content = shadow.querySelector('#content');
+            content.innerText += inp.value + '\n';
         })
+
+        var content = document.createElement('div');
+        content.setAttribute('id', 'content');
+        shadow.appendChild(content);
+
     };
 
-    var XFoo = document.registerElement('x-foo-shadowdom', {prototype: XFooProto});
-
-
-
-
+    var XFoo = document.registerElement('x-todo', {prototype: XTodoProto});
 </script>
 </body>
 
