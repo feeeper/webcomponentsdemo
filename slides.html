@@ -1,32 +1,19 @@
-<template id="slide-1">
-    <div class='slide'>
-    <input type='hidden' id='1'/>
-    <h2>Agenda</h2>
-    <article>
-            Templates<br/>
-            Imports  <br/>
-            Shadow DOM    <br/>
-            Custom elements    <br/>
-            Decorators [?]          <br/>
-    </article>
-        </div>
-</template>
 <template id="slide-2">
     <div class='slide'>
         <input type='hidden' id='2'/>
         <h2>Templates</h2>
         <article>
-            <button onclick='getKitten()'>Получить котенка</button>
+            <button onclick='getPuppy()'>Получить щеночка</button>
             <br/>
         </article>
         <template id='example'>
             <img id='kitten'/>
         </template>
         <script>
-            function getKitten() {
+            function getPuppy() {
                 var template = document.querySelector('#example');
                 var content = template.content;
-                content.querySelector('#kitten').setAttribute('src', 'images/kitten.jpeg');
+                content.querySelector('#kitten').setAttribute('src', '../images/puppy1.jpg');
                 var imported = document.importNode(content);
 
                 document.querySelector('article').appendChild(imported);
@@ -81,7 +68,7 @@
 
 <template id='slide-6'>
     <style>
-        .kitten { background-image: url('images/kitten.jpeg'); width: 400px; height: 300px;}
+        .puppy { background-image: url('images/kitten.jpeg'); width: 400px; height: 300px;}
     </style>
     <div class='slide'>
         <input type='hidden' id='6'/>

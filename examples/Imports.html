@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel='import' href='Templates.html'>
+    <script>
+        function loadKitten() {
+            var source =document.querySelector('link[rel="import"').import;
+            document.querySelector('article').appendChild(source.querySelector('html'));
+        }
+    </script>
+</head>
+<body>
+    <div class='slide'>
+        <input type='hidden' id='3'/>
+        <h2>Imports</h2>
+        <article>
+            <button onclick="loadKitten()">Импортировать котенка</button>
+        </article>
+    </div>
+</body>
+</html>

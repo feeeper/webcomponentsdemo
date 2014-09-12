@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        .puppy { background-image: url('../images/puppy2.jpg'); width: 236px; height: 179px;}
+        div ^ h2 { font-size: 33px; color: blue; }
+    </style>
+</head>
+<body>
+    <div class='slide'>
+        <input type='hidden' id='6'/>
+        <h2>Shadow DOM. Content</h2>
+        <article>
+            <div class='host'>
+                <div class="puppy"></div>
+                <span class='name'>Пёс</span>
+                <span class='surname'>Барбос</span>
+            </div>
+            <br/>
+            <button onclick="doMagic()">do the magic!</button>
+        </article>
+
+        <template>
+            <style>
+                .name { background-color: red; }
+                .surname { background-color: green; }
+                :host-context(div) { background-image: url('../images/puppy3.jpg'); width: 600px; height: 415px; }
+            </style>
+            <h2>Это шаблон</h2>
+            <content select='name'><span class='name'>Пёс</span></content>
+
+            <content></content> <!--здесь будет содержимое хоста-->
+
+            <content select='surname'><span class='surname'>Шарик</span></content>
+
+        </template>
+
+        <script>
+            function doMagic() {
+                var host = document.querySelector('div.host'),
+                        template = document.querySelector('template'),
+                        shadow = host.createShadowRoot();
+                // применять для shadow tree стили документа
+                shadow.applyAuthorStyles = true;
+                // отменить применение наследуемых стилей (font-size, color, ...)
+                shadow.resetStyleInheritance = true;
+                shadow.appendChild(template.content);
+            }
+        </script>
+    </div>
+</body>
+</html>

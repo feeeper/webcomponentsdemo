@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        function getPuppy() {
+            var template = document.querySelector('#example');
+            var content = template.content;
+            content.querySelector('#kitten').setAttribute('src', '../images/puppy1.jpg');
+            var imported = document.importNode(content);
+            document.querySelector('article').appendChild(imported);
+        }
+    </script>
+</head>
+<body>
+    <div class='slide'>
+        <input type='hidden' id='2'/>
+        <h2>Templates</h2>
+        <article>
+            <button onclick='getPuppy()'>Получить щеночка</button>
+            <br/>
+        </article>
+        <template id='example'>
+            <img id='kitten' src='puppy1.jpg'/>
+        </template>
+    </div>
+</body>
+</html>
